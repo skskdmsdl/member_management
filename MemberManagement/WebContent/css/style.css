@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+div, section, header, aside, footer {padding:10px; font-family: harryFont;}
+
+/********** 전체컨테이너 **********/
+div#container	{background-color:#F0F0F0; width:80%; margin:0 auto;}
+
+/********** header **********/
+@font-face      {font-family: harryFont; src: url("font/harryFont.ttf");}
+header			{background: #00bcd4 url('/mvc/images/Java-Servlets-JSP.png') 21% 5%/18% no-repeat; height:130px; position:relative; padding:10px 0 0 0;}
+header h1 		{margin-left:10px; text-align: center; font-size: 50px; color: white;}
+
+
+/********** content **********/
+section#content	{ background-color:#F5F5F5;  min-height:500px;}
+
+/********** footer **********/
+footer			{ background-color:#00bcd4; clear:both; height:75px; text-align:center; padding-top:40px;}

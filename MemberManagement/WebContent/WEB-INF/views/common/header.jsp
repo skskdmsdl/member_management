@@ -5,6 +5,31 @@
 <title>Member Management Project</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css" />
 <script src="<%= request.getContextPath() %>/js/jquery-3.5.1.js"></script>
+<script>
+$(function(){
+	$("#login").submit(function(){
+		let $loginId = $("#loginId");
+		let $loginPwd = $("#loginPwd");
+		
+		if($loginId.val().length == 0) {
+			alert("아이디를 입력하세요.");
+			$loginId.focus();
+			return false;
+		}
+		
+		if($loginPwd.val().length == 0) {
+			alert("비밀번호를 입력하세요.");
+			$loginPwd.focus();
+			return false;
+		}
+		
+		return true;
+	});
+	
+});
+
+
+</script>
 </head>
 <body>
 	<div id="container">
@@ -47,11 +72,11 @@
 	                <div class="icons">
 	                    <img src="images/Snitch.png" alt="Golden-Snitch">
 	                </div>   
-	                <form id="login" action=" <%= request.getContextPath() %>/member/login" method="post" class="input-group">
-	                    <input type="text" id="loginId" class="input-field" placeholder="User ID" required>
-	                    <input type="password" id="loginPwd" class="input-field" placeholder="Enter Password" required>
+	                <form action="<%= request.getContextPath() %>/member/login" id="login" method="post" class="input-group">
+	                    <input type="text" id="loginId" name="loginId" class="input-field" placeholder="User ID" required>
+	                    <input type="password" id="loginPwd" name="loginPwd" class="input-field" placeholder="Enter Password" required>
 	                    <input type="checkbox" class="checkbox"><span>Remember Password</span>
-	                    <button class="submit">LOG IN</button>
+	                    <input type="submit" class="submit" value="LOG IN" />
 	                </form>
 	                <form id="register" action="javascript:alert('가입완료');" onsubmit="return resisterVal();" class="input-group">
 	                    <input type="text" id="userId" class="input-field" placeholder="User ID" required>

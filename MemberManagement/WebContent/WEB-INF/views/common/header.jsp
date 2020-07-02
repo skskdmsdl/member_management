@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="member.model.vo.Member" %>    
+<%
+	Member memberLoggedIn = (Member)session.getAttribute("memberLoggedIn");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,8 +44,29 @@ $(function(){
 
 			<!-- 로그인 버튼 -->
 			<div class="login-container">
-				
+			<% if(memberLoggedIn == null) { %>
 					<a href="#wrap" id="signup-button" onclick="signupbtn()" >Login</a>
+					
+			<% } else { %>
+				<table id="logged-in">
+					<tr>
+						<td>
+							Welcom, <strong><%= memberLoggedIn.getMemberId() %></strong>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" value="Infomation" />
+							&nbsp;
+							<input type="button" value="Logout" />
+						</td>
+					</tr>
+				
+				</table>
+			
+			
+			
+			<% } %>
 			</div>
 			
 			
@@ -73,8 +100,8 @@ $(function(){
 	                    <img src="images/Snitch.png" alt="Golden-Snitch">
 	                </div>   
 	                <form action="<%= request.getContextPath() %>/member/login" id="login" method="post" class="input-group">
-	                    <input type="text" id="loginId" name="loginId" class="input-field" placeholder="User ID" required>
-	                    <input type="password" id="loginPwd" name="loginPwd" class="input-field" placeholder="Enter Password" required>
+	                    <input type="text" id="loginId" name="memberId" class="input-field" placeholder="User ID" required>
+	                    <input type="password" id="loginPwd" name="password" class="input-field" placeholder="Enter Password" required>
 	                    <input type="checkbox" class="checkbox"><span>Remember Password</span>
 	                    <input type="submit" class="submit" value="LOG IN" />
 	                </form>

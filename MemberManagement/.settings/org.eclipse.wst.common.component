@@ -2,6 +2,7 @@
     <wb-module deploy-name="MemberManagement">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
         <property name="java-output-path" value="/MemberManagement/WebContent/WEB-INF/classes"/>
         <property name="context-root" value="web"/>
     </wb-module>

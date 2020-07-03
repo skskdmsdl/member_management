@@ -48,10 +48,8 @@ public class MemberLoginServlet extends HttpServlet {
 		//2. 사용자입력값 처리
 		String memberId = request.getParameter("memberId");
 		String password = request.getParameter("password");
-		String saveId = request.getParameter("saveId");  //체크박스에 별로 value지정이 없다면 on이라고 값이 넘어옴
-//		System.out.println("memberId@servlet="+memberId);
-//		System.out.println("password@servlet="+password);
-//		System.out.println("saveId@servlet="+saveId);
+		System.out.println("memberId@servlet="+memberId);
+		System.out.println("password@servlet="+password);
 		
 		System.out.println(JDBCTemplate.getConnection());
 		//3. 업무로직
@@ -64,13 +62,6 @@ public class MemberLoginServlet extends HttpServlet {
 		&& memberId.equals(m.getMemberId())
 		&& password.equals(m.getPassword())) {
 			
-//			//로그인한 사용자 정보 저장
-//			request.setAttribute("memberLoggedIn", m);
-//			
-//			RequestDispatcher reqDispatcher
-//				= request.getRequestDispatcher("/index.jsp");
-//			reqDispatcher.forward(request, response);
-			
 			//세션가져오기 : create 여부 true 
 			//세션객체가 없다면, 새로 생성후 리턴
 			//세션객체가 있다면, 가져오기
@@ -79,26 +70,26 @@ public class MemberLoginServlet extends HttpServlet {
 			
 			//세션유효시간설정 : 초
 			//web.xml 선언한 session-config > session-timeout 보다 우선순위가 높다.
-			session.setMaxInactiveInterval(30*60);
+			//session.setMaxInactiveInterval(30*60);
 			
 			
 			//세션에 로그인한 사용자 정보 저장
 			session.setAttribute("memberLoggedIn", m);
 			
-			//쿠키(saveId) 처리
-			Cookie c = new Cookie("saveId", memberId);
-			c.setPath(request.getContextPath());//쿠키유효디렉토리 설정
-			
-			//saveId 체크한 경우 : 쿠키 생성
-			if(saveId != null) {
-				c.setMaxAge(7*24*60*60);//7일				
-			}
-			//saveId를 체크하지 않은 경우: 쿠키 삭제
-			else {
-				c.setMaxAge(0);//브라우져에서 즉시삭제(쿠키는 별도의 삭제 메시지가 없어서 maxAge를 통해 삭제함)
-			}
-			
-			response.addCookie(c);
+//			//쿠키(saveId) 처리
+//			Cookie c = new Cookie("saveId", memberId);
+//			c.setPath(request.getContextPath());//쿠키유효디렉토리 설정
+//			
+//			//saveId 체크한 경우 : 쿠키 생성
+//			if(saveId != null) {
+//				c.setMaxAge(7*24*60*60);//7일				
+//			}
+//			//saveId를 체크하지 않은 경우: 쿠키 삭제
+//			else {
+//				c.setMaxAge(0);//브라우져에서 즉시삭제
+//			}
+//			
+//			response.addCookie(c);
 			
 			//리다이렉트 처리
 			//로그인 요청페이지로 이동

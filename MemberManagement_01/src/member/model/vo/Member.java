@@ -66,15 +66,14 @@ public class Member implements Serializable, HttpSessionBindingListener{
 	}
 
 	@Override
-	public void valueBound(HttpSessionBindingEvent e) {
-		//로그인한경우
-		System.out.println( "(" + memberId + ")님이 로그인했습니다!" );
+	public void valueBound(HttpSessionBindingEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
-	
+
 	@Override
-	public void valueUnbound(HttpSessionBindingEvent e) {
-		//로그아웃한경우
-		System.out.println("(" + memberId + ")님이 로그아웃했습니다!" );
+	public void valueUnbound(HttpSessionBindingEvent event) {
+		// TODO Auto-generated method stub
 		
 	}
 	

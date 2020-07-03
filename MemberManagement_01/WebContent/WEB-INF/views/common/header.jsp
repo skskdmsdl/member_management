@@ -2,29 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="member.model.vo.Member" %>    
 <%
-	//session : 선언없이 사용할 수 있는 jsp내장객체
 	Member memberLoggedIn = (Member)session.getAttribute("memberLoggedIn");
-
-	//쿠키관련
-	Cookie[] cookies = request.getCookies();
-	boolean saveIdChecked = false;
-	String saveIdValue = "";
-	
-	if(cookies != null) {
-		System.out.println("------------------------------------");
-		for(Cookie c : cookies){
-			String k = c.getName();
-			String v = c.getValue();
-			System.out.println(k + "=" + v);
-			
-			//saveId 쿠키 존재여부 확인
-			if("saveId".equals(k)){
-				saveIdChecked = true;
-				saveIdValue = v; //memberId
-			}
-		}
-		System.out.println("------------------------------------");
-	}
 %>    
 <!DOCTYPE html>
 <html>
@@ -34,8 +12,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css" />
 <script src="<%= request.getContextPath() %>/js/jquery-3.5.1.js"></script>
 <script>
-
-//로그인
 $(function(){
 	$("#login").submit(function(){
 		let $loginId = $("#loginId");
@@ -58,38 +34,6 @@ $(function(){
 	
 });
 
-//회원 가입
-$(function(){
-	$("#register").submit(function(){
-		//아이디검사
-		let $memberId = $("#userId");
-		
-		if(!/^[\w]{4,}$/.test($memberId.val())){
-			alert("아이디가 유효하지 않습니다.");
-			$memberId.focus();
-			return false;
-		}
-		
-		//아이디 중복검사 
-		/* let $isIdValid = $("#isIdValid");
-		if($isIdValid.val() == 0){
-			alert("아이디 중복검사 해주세요.");
-			return false;
-		} */
-		
-		//비밀번호 검사
-		let $pwd1 = $("#userPwd");
-		let $pwd2 = $("#userPwdChk");
-		
-		if($pwd1.val() !== $pwd2.val()){
-			alert("비밀번호가 일치하지 않습니다.");
-			$pwd1.focus();
-			return false;
-		}
-		
-		return true;
-	});
-});
 
 </script>
 </head>
@@ -157,16 +101,15 @@ $(function(){
 	                    <img src="images/Snitch.png" alt="Golden-Snitch">
 	                </div>   
 	                <form action="<%= request.getContextPath() %>/member/login" id="login" method="post" class="input-group">
-	                    <input type="text" id="loginId" name="memberId" class="input-field" placeholder="User ID" required
-	                    	   value="<%= saveIdChecked ? saveIdValue : "" %>" />
+	                    <input type="text" id="loginId" name="memberId" class="input-field" placeholder="User ID" required>
 	                    <input type="password" id="loginPwd" name="password" class="input-field" placeholder="Enter Password" required>
-	                    <input type="checkbox" class="checkbox" name="saveId" <%= saveIdChecked ? "checked" : "" %> /><span>Remember Id</span>
+	                    <input type="checkbox" class="checkbox"><span>Remember Password</span>
 	                    <input type="submit" class="submit" value="LOG IN" />
 	                </form>
-	                <form id="register" action="<%= request.getContextPath() %>/member/enroll" method="post" onsubmit="return resisterVal();" class="input-group">
-	                    <input type="text" id="userId" name="memberId" class="input-field" placeholder="User ID" required>
-	                    <input type="email" id="userEmail" name="email" class="input-field" placeholder="User Email" required>
-	                    <input type="password" id="userPwd" name="password" class="input-field" placeholder="Enter Password" required>
+	                <form id="register" action="javascript:alert('가입완료');" onsubmit="return resisterVal();" class="input-group">
+	                    <input type="text" id="userId" class="input-field" placeholder="User ID" required>
+	                    <input type="email" id="userEmail" class="input-field" placeholder="User Email" required>
+	                    <input type="password" id="userPwd" class="input-field" placeholder="Enter Password" required>
 	                    <input type="password" id="userPwdChk" class="input-field" placeholder="Enter Password Check" required>
 	                    <input type="checkbox" class="checkbox"><span>Terms and conditions</span>
 	                    <button class="submit">REGISTER</button>

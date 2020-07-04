@@ -53,7 +53,7 @@ public class MemberLoginServlet extends HttpServlet {
 //		System.out.println("password@servlet="+password);
 //		System.out.println("saveId@servlet="+saveId);
 		
-		System.out.println(JDBCTemplate.getConnection());
+//		System.out.println(JDBCTemplate.getConnection());
 		//3. 업무로직
 		Member m = new MemberService().selectOne(memberId);
 		System.out.println(m);

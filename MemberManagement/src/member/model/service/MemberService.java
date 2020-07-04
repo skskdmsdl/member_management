@@ -17,7 +17,9 @@ public class MemberService {
 		Connection conn = getConnection();
 		Member m = memberDAO.selectOne(conn, memberId);
 		close(conn);
+//		System.out.println("m@service = "+m);
 		return m;
+		
 	}
 
 	public int insertMember(Member newMember) {

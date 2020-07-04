@@ -37,6 +37,7 @@ div.login-container table#logged-in input[type=button]{border-radius:3px;}
 .icons img {width: 80px;cursor: pointer;}
 #login.input-group {top: 180px;position: absolute;width: 280px;transition: .5s;}
 #register.input-group {top: 140px;position: absolute;width: 280px;transition: .5s;}
+#userId{width: 70%;padding: 10px 0;margin: 5px 0;border: none;border-bottom: 1px solid #999;outline: none;background: transparent;}
 .input-field {width: 100%;padding: 10px 0;margin: 5px 0;border: none;border-bottom: 1px solid #999;outline: none;background: transparent;}
 .submit {width: 85%;padding: 10px 30px;cursor: pointer;display: block;margin: auto;background: linear-gradient(to right, #dd4a81, #6858dc);color: white;border: 0;outline: none;border-radius: 30px;}
 .checkbox {margin: 20px 10px 30px 0;}
@@ -49,6 +50,8 @@ div.login-container table#logged-in input[type=button]{border-radius:3px;}
 div.login-container table#logged-in{border-spacing:10px;}
 div.login-container table#logged-in input[type=button]{border-radius:3px;}
 
+/*아이디 중복체크*/
+#id_check{font-size:12px;display: contents;}
 
 /* 메뉴관련스타일 */
 header nav {background:#5283de; width:100%; margin-top:40px;}

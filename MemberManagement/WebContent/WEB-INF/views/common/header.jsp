@@ -58,6 +58,35 @@ $(function(){
 	
 });
 
+$(document).ready(function(){
+	$("#userId").blur(function(){
+		
+		let memberId = $("#userId").val();
+		$.ajax({
+			url : "<%= request.getContextPath() %>/member/checkIdDuplicate",
+			method: "GET", 
+			data: {"memberId": memberId}, 
+			success: function(data){
+				if(data=="notUsable"){
+					// 아이디 중복 시 문구
+					$("#id_check").text("ID in use");
+					$("#id_check").css("color", "red");
+					$("#submit").attr("disabled", true);
+				}else if(memberId.length!=0&&data=="usable"){
+					$("#id_check").text("Available ID");
+					$("#id_check").css("color", "blue");
+				}
+			}, error : function() {
+					console.log("실패");
+			}
+		});
+		
+	});
+	
+})
+	
+
+
 //회원 가입
 $(function(){
 	$("#register").submit(function(){
@@ -165,6 +194,7 @@ $(function(){
 	                </form>
 	                <form id="register" action="<%= request.getContextPath() %>/member/enroll" method="post" onsubmit="return resisterVal();" class="input-group">
 	                    <input type="text" id="userId" name="memberId" class="input-field" placeholder="User ID" required>
+	                    <div id="id_check"></div>
 	                    <input type="email" id="userEmail" name="email" class="input-field" placeholder="User Email" required>
 	                    <input type="password" id="userPwd" name="password" class="input-field" placeholder="Enter Password" required>
 	                    <input type="password" id="userPwdChk" class="input-field" placeholder="Enter Password Check" required>
@@ -187,6 +217,7 @@ $(function(){
 		    z.style.left = "0";
 		    loginbtn.style.color = "white";
 		    registerbtn.style.color = "black";
+		    
 		}
 		function register(){
 		    x.style.left = "-400px";
@@ -202,6 +233,9 @@ $(function(){
 		function closeBtn() {
 		    wrap.style.display = "none";
 		    signWrap.style.display = "none";
+		    $("#register").children().val('');
+		    $("#loginPwd").val('');
+		    $("#id_check").text("");
 		}
 		</script>
 	        

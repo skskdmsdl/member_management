@@ -62,6 +62,8 @@ public class MemberDAO {
 			close(rset);
 			close(pstmt);
 		}
+		
+		System.out.println("m@DAO = "+m);
 		return m;
 	}
 

@@ -6,19 +6,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberLogoutServlet
+ * Servlet implementation class CheckIdDuplicateServlet
  */
-@WebServlet("/member/logout")
-public class MemberLogoutServlet extends HttpServlet {
+@WebServlet("/member/checkIdDuplicate")
+public class CheckIdDuplicateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberLogoutServlet() {
+    public CheckIdDuplicateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,12 +29,26 @@ public class MemberLogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//session 객체가 존재하면 가져오고,
-		//존재하지 않으면 null 리턴
-		HttpSession session = request.getSession(false);
+		//1. 인코딩시작
+		request.setCharacterEncoding("utf-8");
 		
-		if(session != null)
-			session.invalidate();
+		//2. 사용자 입력값 처리
+		String memberId = request.getParameter("memberId");
+//		System.out.println("memberId@servlet = " + memberId);
+		
+		//3. 업무로직
+		Member m  = new MemberService().selectOne(memberId);
+		boolean isIdUsable = m == null ? true : false;
+		
+		if(isIdUsable) {
+			response.getWriter().print("usable");
+		}else {
+			response.getWriter().print("notUsable");
+		}
+		
+	
+	
+	
 	}
 
 	/**

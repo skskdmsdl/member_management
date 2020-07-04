@@ -3,7 +3,7 @@
 		</section>
 
 		<footer>
-			<p>Copyright twenty twenty <strong>BBANG</strong>. All rights reserved.</p>
+			<p>Copyright twenty twenty <strong>jei</strong>. All rights reserved.</p>
 		</footer>
 	</div>
 </body>

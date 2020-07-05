@@ -63,7 +63,7 @@ public class MemberDAO {
 			close(pstmt);
 		}
 		
-		System.out.println("m@DAO = "+m);
+//		System.out.println("m@DAO = "+m);
 		return m;
 	}
 
@@ -92,7 +92,29 @@ public class MemberDAO {
 			close(pstmt);
 		}
 		
-		System.out.println("result@dao="+result);
+//		System.out.println("result@dao="+result);
+		return result;
+	}
+
+	public int updateMember(Connection conn, Member updateMember) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, updateMember.getEmail());
+			pstmt.setString(2, updateMember.getMemberId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+//		System.out.println("result@dao="+result);
 		return result;
 	}
 

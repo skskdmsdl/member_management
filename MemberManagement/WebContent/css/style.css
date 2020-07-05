@@ -44,6 +44,7 @@ div.login-container table#logged-in input[type=button]{border-radius:3px;}
 .form-wrap span {color: #777;font-size: 12px;bottom: 68px;position: absolute;}
 #login {left: 50px;}
 #register {left: 450px;} 
+#findLink{color: #777;}
 
 
 /* 로그인성공후 */
@@ -52,6 +53,14 @@ div.login-container table#logged-in input[type=button]{border-radius:3px;}
 
 /*아이디 중복체크*/
 #id_check{font-size:12px;display: contents;}
+
+/* 회원수정페이지 */
+section#enroll-container {text-align:center; margin-top:100px;}
+section#enroll-container form {margin-top:30px;}
+section#enroll-container input{margin:5px; }
+section#enroll-container table{margin:30px auto;}
+section#enroll-container table th {padding:0 10px 0 10px; text-align:right;}
+section#enroll-container table td {padding:0 10px; text-align:left;}
 
 /* 메뉴관련스타일 */
 header nav {background:#5283de; width:100%; margin-top:40px;}

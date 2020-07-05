@@ -56,7 +56,7 @@ public class MemberLoginServlet extends HttpServlet {
 //		System.out.println(JDBCTemplate.getConnection());
 		//3. 업무로직
 		Member m = new MemberService().selectOne(memberId);
-		System.out.println(m);
+//		System.out.println(m);
 		
 		//4. 응답처리
 		//아이디, 비번이 모두 일치하는 경우 

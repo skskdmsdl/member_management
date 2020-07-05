@@ -11,11 +11,9 @@
 	String saveIdValue = "";
 	
 	if(cookies != null) {
-		System.out.println("------------------------------------");
 		for(Cookie c : cookies){
 			String k = c.getName();
 			String v = c.getValue();
-			System.out.println(k + "=" + v);
 			
 			//saveId 쿠키 존재여부 확인
 			if("saveId".equals(k)){
@@ -23,7 +21,7 @@
 				saveIdValue = v; //memberId
 			}
 		}
-		System.out.println("------------------------------------");
+
 	}
 %>    
 <!DOCTYPE html>
@@ -141,7 +139,8 @@ $(function(){
 					</tr>
 					<tr>
 						<td>
-							<input type="button" value="Infomation" />
+							<input type="button" value="Infomation" 
+								   onclick="location.href='<%= request.getContextPath() %>/member/memberView?memberId=<%=memberLoggedIn.getMemberId() %>';" />
 							&nbsp;
 							<input type="button" value="Logout" 
 								   onclick="location.href='<%=request.getContextPath()%>/member/logout'"/>
@@ -191,6 +190,7 @@ $(function(){
 	                    <input type="password" id="loginPwd" name="password" class="input-field" placeholder="Enter Password" required>
 	                    <input type="checkbox" class="checkbox" name="saveId" <%= saveIdChecked ? "checked" : "" %> /><span>Remember Id</span>
 	                    <input type="submit" class="submit" value="LOG IN" />
+	                    <a id="findLink" href="#">find ID</a>
 	                </form>
 	                <form id="register" action="<%= request.getContextPath() %>/member/enroll" method="post" onsubmit="return resisterVal();" class="input-group">
 	                    <input type="text" id="userId" name="memberId" class="input-field" placeholder="User ID" required>

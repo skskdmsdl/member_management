@@ -190,7 +190,7 @@ $(function(){
 	                    <input type="password" id="loginPwd" name="password" class="input-field" placeholder="Enter Password" required>
 	                    <input type="checkbox" class="checkbox" name="saveId" <%= saveIdChecked ? "checked" : "" %> /><span>Remember Id</span>
 	                    <input type="submit" class="submit" value="LOG IN" />
-	                    <a id="findLink" href="#">find ID</a>
+	                    <a id="findLink" href="<%= request.getContextPath() %>/member/findMember">find ID</a>
 	                </form>
 	                <form id="register" action="<%= request.getContextPath() %>/member/enroll" method="post" onsubmit="return resisterVal();" class="input-group">
 	                    <input type="text" id="userId" name="memberId" class="input-field" placeholder="User ID" required>

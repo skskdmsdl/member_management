@@ -8,7 +8,7 @@ div#container	{background-color:#F0F0F0; width:100%; margin:0 auto;}
 
 /********** header **********/
 @font-face      {font-family: harryFont; src: url("font/harryFont.ttf");}
-header			{background: #00bcd4 url('../images/banner.png') 5% 0/140px no-repeat; height:130px; position:relative; padding:10px 0 0 0;}
+header			{background: #430404 url('../images/banner.png') 5% 0/140px no-repeat; height:130px; position:relative; padding:10px 0 0 0;}
 header h1 		{margin-left:10px; text-align: center; font-size: 50px; color: white;}
 
 /* 로그인컨테이너 */
@@ -19,6 +19,7 @@ header div.login-container{width:150px; position:absolute; right: 0px; top: 10px
 #login-container a {transition: 0.2s ease-in-out, color 0.2s ease-in-out;color: #e44c65;text-decoration: none;}
 #login-container a:hover {color: #e44c65 !important;border-bottom-color: transparent;}
 #saveId+label{font-size:12px;font-family:'고딕'}
+
 
 /* 로그인 성공 후 */
 div.login-container table#logged-in{border-spacing:10px;}
@@ -63,7 +64,7 @@ section#enroll-container table th {padding:0 10px 0 10px; text-align:right;}
 section#enroll-container table td {padding:0 10px; text-align:left;}
 
 /* 메뉴관련스타일 */
-header nav {background:#5283de; width:100%; margin-top:40px;}
+header nav {background:#b79114; width:100%; margin-top:40px;}
 
 /* ul태그의 가운데정렬 */
 ul.main-nav{
@@ -78,10 +79,10 @@ ul.main-nav li {
 	height: 2em;
 	float: left; 
 	text-align: center; 
-	border-left: 1px #00bcd4 solid;
-	background-color: #5283de; 
+	border-left: 1px #f3c01b solid;
+	background-color: #b79114; 
 }
-ul.main-nav li:last-of-type{border-right:1px #00bcd4 solid;;}
+ul.main-nav li:last-of-type{border-right:1px #f3c01b solid;;}
 ul.main-nav li a {
 	/*a태그의 display기본값은 inline임*/
 	/* inline요소의 padding, margin은 제대로 동작하지 않음.(컨텐츠의 시각요소기준으로 제멋대로임	) */
@@ -106,5 +107,5 @@ ul.main-nav li:hover > a{
 section#content	{ background-color:#F5F5F5;  min-height:500px;}
 
 /********** footer **********/
-footer			{ background-color:#00bcd4; clear:both; height:75px; text-align:center; padding-top:40px;}
+footer			{ background-color:#430404; clear:both; height:75px; text-align:center; padding-top:40px;color:white;}
 

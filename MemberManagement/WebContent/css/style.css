@@ -29,18 +29,18 @@ div.login-container table#logged-in input[type=button]{border-radius:3px;}
 #signWrap{display: none;background-color: rgba(0, 0, 0, 0.7);width: 100%;height: 100%;z-index: 120;top: 0;margin: 0;position: fixed;}
 #wrap {display: none;margin: 0;padding: 0;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);position: fixed;z-index: 130;}
 .form-wrap {width: 380px;height: 480px;position: relative;margin: 0 auto;background: #fff;padding: 5px;overflow: hidden;border-radius: 30px;}
-.button-wrap {padding: 10px 0 10px 6px;width: 220px;margin:35px auto 15px auto;position: relative;box-shadow: 0 0 600px 9px rgba(252,174,143, 0.7);border-radius: 30px;}
+.button-wrap {padding: 10px 0 10px 6px;width: 220px;margin:35px auto 15px auto;position: relative;border-radius: 30px;}
 .togglebtn {padding: 8px 25px;cursor: pointer;background: transparent;border: 0;outline: none;position: relative;}
 #closeBtn {position: absolute;font-size: 30px;cursor: pointer;background-color: rgba(255, 255, 255, 0.75);outline: 0;top: 15px;left: 350px; border:none;}
 #loginBtn{color: white;}
-#btn {top: 0;left: 0;position: absolute;width: 110px;height: 100%;background: linear-gradient(to right, #dd4a81, #6858dc);border-radius: 30px;transition: .5s;}
+#btn {top: 0;left: 0;position: absolute;width: 110px;height: 100%;background: linear-gradient(to right, #430404, #6c1a31);border-radius: 30px;transition: .5s;}
 .icons {margin: 10px auto;text-align: center;}
 .icons img {width: 80px;cursor: pointer;}
 #login.input-group {top: 180px;position: absolute;width: 280px;transition: .5s;}
 #register.input-group {top: 140px;position: absolute;width: 280px;transition: .5s;}
 #userId{width: 70%;padding: 10px 0;margin: 5px 0;border: none;border-bottom: 1px solid #999;outline: none;background: transparent;}
 .input-field {width: 100%;padding: 10px 0;margin: 5px 0;border: none;border-bottom: 1px solid #999;outline: none;background: transparent;}
-.submit {width: 85%;padding: 10px 30px;cursor: pointer;display: block;margin: auto;background: linear-gradient(to right, #dd4a81, #6858dc);color: white;border: 0;outline: none;border-radius: 30px;}
+.submit {width: 85%;padding: 10px 30px;cursor: pointer;display: block;margin: auto;background: linear-gradient(to right, #430404, #6c1a31);color: white;border: 0;outline: none;border-radius: 30px;}
 .checkbox {margin: 20px 10px 30px 0;}
 .form-wrap span {color: #777;font-size: 12px;bottom: 68px;position: absolute;}
 #login {left: 50px;}

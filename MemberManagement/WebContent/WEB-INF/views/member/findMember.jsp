@@ -76,21 +76,21 @@ function checkIdDuplicate(){
 		<table>
 			
 			<tr>
-				<th>이메일</th>
+				<th>Email</th>
 				<td>	
 					<input type="email" placeholder="abc@xyz.com" name="email" id="email"><br>
 				</td>
 			</tr>
 			<tr>
-				<th>휴대폰</th>
+				<th>Phone</th>
 				<td>	
-					<input type="tel" placeholder="(-없이)01012345678" name="phone" id="phone" maxlength="11" required><br>
+					<input type="tel" placeholder="01012345678" name="phone" id="phone" maxlength="11" required><br>
 				</td>
 			</tr>
 			
 		</table>
-		<input type="submit" value="가입" >
-		<input type="reset" value="취소">
+		<input type="submit" value="find Id" >
+		<input type="reset" value="cancel">
 	</form>
 </section>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LoggerFilter implements Filter {
 
     /**
-     * Default constructor. 
+     * 사용자 요청이 처리되는 순서를 찍어볼 용도의 필터
      */
     public LoggerFilter() {
         // TODO Auto-generated constructor stub

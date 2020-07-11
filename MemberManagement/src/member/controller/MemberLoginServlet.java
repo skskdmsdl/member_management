@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import common.JDBCTemplate;
+import common.util.Utils;
 import member.model.service.MemberService;
 import member.model.vo.Member;
 
@@ -47,7 +48,7 @@ public class MemberLoginServlet extends HttpServlet {
 		
 		//2. 사용자입력값 처리
 		String memberId = request.getParameter("memberId");
-		String password = request.getParameter("password");
+		String password = Utils.getEncryptedPassword(request.getParameter("password"));
 		String saveId = request.getParameter("saveId");  //체크박스에 별로 value지정이 없다면 on이라고 값이 넘어옴
 //		System.out.println("memberId@servlet="+memberId);
 //		System.out.println("password@servlet="+password);

@@ -44,7 +44,7 @@ function updatePassword(){
 	
 	let url = "<%= request.getContextPath() %>/member/updatePassword?memberId=<%= member.getMemberId() %>";
 	let title = "updatePasswordPopup";
-	let spec = "left=500px, top=200px, width=480px, height=330px";
+	let spec = "left=500px, top=200px, width=480px, height=220px";
 	
 	open(url, title, spec);
 }
@@ -66,20 +66,6 @@ function updatePassword(){
 						   value="<%= member.getMemberId() %>" readonly required>
 				</td>
 			</tr>
-			<%-- <tr>
-				<th>패스워드</th>
-				<td>
-					<input type="password" name="password" id="password_" 
-						   value="<%= member.getPassword() %>" required><br>
-				</td>
-			</tr>
-			<tr>
-				<th>패스워드확인</th>
-				<td>	
-					<input type="password" id="password2" 
-						   value="<%= member.getPassword() %>" required><br>
-				</td>
-			</tr>  --%> 
 			<tr>
 				<th>EMAIL</th>
 				<td>	

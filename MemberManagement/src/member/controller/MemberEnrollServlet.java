@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.util.Utils;
 import member.model.service.MemberService;
 import member.model.vo.Member;
 
@@ -47,7 +48,7 @@ public class MemberEnrollServlet extends HttpServlet {
 		
 		//2. 사용자입력값 처리
 		String memberId = request.getParameter("memberId");
-		String password = request.getParameter("password");
+		String password = Utils.getEncryptedPassword(request.getParameter("password")); //암호화
 		String email = request.getParameter("email");
 		
 		//Member객체로 만들기

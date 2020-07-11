@@ -118,4 +118,27 @@ public class MemberDAO {
 		return result;
 	}
 
+	public int updatePassword(Connection conn, String memberId, String newPassword) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePassword");
+		//update member set password = ? where member_id = ?
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, newPassword);
+			pstmt.setString(2, memberId);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+//		System.out.println("result@dao = " + result);
+		
+		return result;
+	}
+
 }

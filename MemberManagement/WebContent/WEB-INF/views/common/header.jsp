@@ -139,8 +139,11 @@ $(function(){
 					</tr>
 					<tr>
 						<td>
-							<input type="button" value="Infomation" 
-								   onclick="location.href='<%= request.getContextPath() %>/member/memberView?memberId=<%=memberLoggedIn.getMemberId() %>';" />
+							 <% if(memberLoggedIn.getMemberRole().equals("A")){ %>
+			                    <input type="button" value="memberInfo" onclick="location.href='<%= request.getContextPath() %>/member/memberView?memberId=<%=memberLoggedIn.getMemberId() %>'">
+			                  <% } else{ %>
+			                    <input type="button" value="Infomation" onclick="location.href='<%= request.getContextPath() %>/member/memberView?memberId=<%=memberLoggedIn.getMemberId() %>'">
+			                  <% } %> 
 							&nbsp;
 							<input type="button" value="Logout" 
 								   onclick="location.href='<%=request.getContextPath()%>/member/logout'"/>

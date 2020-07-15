@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import member.model.vo.Member;
@@ -139,6 +141,62 @@ public class MemberDAO {
 //		System.out.println("result@dao = " + result);
 		
 		return result;
+	}
+
+	public List<Member> selectAll(Connection conn, int cPage, int numPerPage) {
+		List<Member> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAllPaging");
+			
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (cPage - 1) * numPerPage + 1);
+			pstmt.setInt(2, cPage * numPerPage);
+			
+			rset = pstmt.executeQuery();
+			list = new ArrayList<>();
+			while(rset.next()) {
+				Member m = new Member();
+				m.setMemberId(rset.getString("MEMBER_ID"));
+				m.setPassword(rset.getString("PASSWORD"));
+				m.setMemberRole(rset.getString("MEMBER_ROLE"));
+				m.setEmail(rset.getString("EMAIL"));
+				m.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+//		System.out.println("list@dao = " + list);
+		
+		return list;
+	}
+
+	public int selectTotalContents(Connection conn) {
+		int totalContents = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectTotalContents");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next())
+				totalContents = rset.getInt("TOTAL_CONTENTS");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return totalContents;
 	}
 
 }

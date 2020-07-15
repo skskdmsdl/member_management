@@ -5,6 +5,7 @@ import member.model.vo.Member;
 import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.List;
 
 public class MemberService {
 	
@@ -57,6 +58,20 @@ public class MemberService {
 		else rollback(conn);
 		close(conn);
 		return result;
+	}
+
+	public List<Member> selectAll(int cPage, int numPerPage) {
+		Connection conn = getConnection();
+		List<Member> list = memberDAO.selectAll(conn, cPage, numPerPage);
+		close(conn);
+		return list;
+	}
+
+	public int selectTotalContents() {
+		Connection conn = getConnection();
+		int totalContents = memberDAO.selectTotalContents(conn);
+		close(conn);
+		return totalContents;
 	}
 	
 	

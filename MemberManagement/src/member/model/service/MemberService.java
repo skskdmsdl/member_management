@@ -73,6 +73,13 @@ public class MemberService {
 		close(conn);
 		return totalContents;
 	}
+
+	public List<Member> searchMember(String searchType, String searchKeyword, int cPage, int numPerPage) {
+		Connection conn = getConnection();
+		List<Member> list = memberDAO.searchMember(conn, searchType, searchKeyword, cPage, numPerPage);
+		close(conn);
+		return list;
+	}
 	
 	
 

@@ -199,4 +199,51 @@ public class MemberDAO {
 		return totalContents;
 	}
 
+	public List<Member> searchMember(Connection conn, String searchType, String searchKeyword, int cPage,
+			int numPerPage) {
+		List<Member> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchMemberPaging");
+//		select * from member where # like ?
+//		select * from member where member_name like ?
+		
+		String columnName = "";
+		switch(searchType) {
+		case "memberId": columnName = "member_id"; break;
+		case "memberName": columnName = "member_name"; break;
+		case "gender": columnName = "gender"; break;
+		}
+		
+		sql = sql.replace("#", columnName);
+		System.out.println("sql@dao = " + sql);
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + searchKeyword + "%");
+			pstmt.setInt(2, (cPage - 1) * numPerPage + 1);
+			pstmt.setInt(3, cPage * numPerPage);
+			
+			rset = pstmt.executeQuery();
+			list = new ArrayList<>();
+			while(rset.next()) {
+				Member m = new Member();
+				m.setMemberId(rset.getString("MEMBER_ID"));
+				m.setPassword(rset.getString("PASSWORD"));
+				m.setMemberRole(rset.getString("MEMBER_ROLE"));
+				m.setEmail(rset.getString("EMAIL"));
+				m.setEnrollDate(rset.getDate("ENROLL_DATE"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		System.out.println("list@dao = " + list);
+		
+		return list;
+	}
+
 }

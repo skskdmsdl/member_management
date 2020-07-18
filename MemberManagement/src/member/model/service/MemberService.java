@@ -81,10 +81,6 @@ public class MemberService {
 		return list;
 	}
 
-	public int selectTotalContents(String searchType, String searchKeyword) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	
 

@@ -55,7 +55,7 @@ public class AdminMemberFinderServlet extends HttpServlet {
 		//select * from member where ? like ?
 		//식별자 부분은 PrepareStatement가 지원하는 setter를 이용할 수 없다.
 		
-		//pageBar영역
+		//pageBar영역 수정하기!!!!!!!!!!!
 		int totalContents = new MemberService().selectTotalContents(searchType, searchKeyword);
 		String url 
 			= request.getRequestURI() 

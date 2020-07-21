@@ -67,9 +67,9 @@ public class MemberService {
 		return list;
 	}
 
-	public int selectTotalContents() {
+	public int selectTotalContents(String searchType, String searchKeyword) {
 		Connection conn = getConnection();
-		int totalContents = memberDAO.selectTotalContents(conn);
+		int totalContents = memberDAO.selectTotalContents(conn, searchType, searchKeyword);
 		close(conn);
 		return totalContents;
 	}
@@ -79,6 +79,13 @@ public class MemberService {
 		List<Member> list = memberDAO.searchMember(conn, searchType, searchKeyword, cPage, numPerPage);
 		close(conn);
 		return list;
+	}
+
+	public int selectTotalContents() {
+		Connection conn = getConnection();
+		int totalContents = memberDAO.selectTotalContents(conn);
+		close(conn);
+		return totalContents;
 	}
 
 	

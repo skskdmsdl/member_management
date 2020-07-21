@@ -176,14 +176,26 @@ public class MemberDAO {
 		return list;
 	}
 
-	public int selectTotalContents(Connection conn) {
+	public int selectTotalContents(Connection conn, String searchType, String searchKeyword) {
 		int totalContents = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectTotalContents");
+		String sql = prop.getProperty("selectFinderTotalContents");
+		
+		String columnName = "";
+		switch(searchType) {
+		case "memberId": columnName = "member_id"; break;
+		case "memberName": columnName = "member_name"; break;
+		case "gender": columnName = "gender"; break;
+		}
+		
+		sql = sql.replace("#", columnName);
+		System.out.println("sql@dao = " + sql);
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + searchKeyword + "%");
+			
 			rset = pstmt.executeQuery();
 			if(rset.next())
 				totalContents = rset.getInt("TOTAL_CONTENTS");
@@ -195,7 +207,7 @@ public class MemberDAO {
 			close(pstmt);
 		}
 		
-		
+		System.out.println("totalContents@dao = " + totalContents);
 		return totalContents;
 	}
 
@@ -244,6 +256,29 @@ public class MemberDAO {
 		System.out.println("list@dao = " + list);
 		
 		return list;
+	}
+
+	public int selectTotalContents(Connection conn) {
+		int totalContents = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectTotalContents");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next())
+				totalContents = rset.getInt("TOTAL_CONTENTS");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return totalContents;
 	}
 
 }

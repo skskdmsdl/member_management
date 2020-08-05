@@ -79,5 +79,8 @@ function updatePassword(){
 		<input type="reset" value="Cancel">
 		<input type="button" value="Quit" onclick="deleteMember();" />
 	</form>
+	<form action="<%=request.getContextPath() %>/member/deleteMember" name="deleteMemberFrm" method="POST">
+		<input type="hidden" name="memberId" value="<%=member.getMemberId() %>" />
+	</form>
 </section>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

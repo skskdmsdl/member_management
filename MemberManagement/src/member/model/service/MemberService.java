@@ -88,6 +88,15 @@ public class MemberService {
 		return totalContents;
 	}
 
+	public int deleteMember(String memberId) {
+		Connection conn = getConnection();
+		int result = new MemberDAO().deleteMember(conn, memberId);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+
 	
 	
 

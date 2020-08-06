@@ -163,10 +163,10 @@ $(function(){
 				<ul class="main-nav">
 					<li><a href="<%= request.getContextPath() %>">Home</a></li>
 					<li><a href="<%= request.getContextPath() %>/board/boardList">Community</a></li>
-					<%-- <% if(memberLoggedIn != null 
+					<% if(memberLoggedIn != null 
 						&& MemberService.MEMBER_ROLE_ADMIN.equals(memberLoggedIn.getMemberRole())){ %>
 					<li><a href="<%= request.getContextPath() %>/admin/memberList">회원관리</a></li>
-					<% } %> --%>
+					<% } %> 
 				</ul>
 			</nav>
 			<!-- 메인메뉴 끝 -->

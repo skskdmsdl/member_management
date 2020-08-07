@@ -185,8 +185,8 @@ public class MemberDAO {
 		String columnName = "";
 		switch(searchType) {
 		case "memberId": columnName = "member_id"; break;
-		case "memberName": columnName = "member_name"; break;
-		case "gender": columnName = "gender"; break;
+		case "email": columnName = "email"; break;
+		case "memberRole": columnName = "member_role"; break;
 		}
 		
 		sql = sql.replace("#", columnName);
@@ -223,8 +223,8 @@ public class MemberDAO {
 		String columnName = "";
 		switch(searchType) {
 		case "memberId": columnName = "member_id"; break;
-		case "memberName": columnName = "member_name"; break;
-		case "gender": columnName = "gender"; break;
+		case "email": columnName = "email"; break;
+		case "memberRole": columnName = "member_role"; break;
 		}
 		
 		sql = sql.replace("#", columnName);

@@ -1,3 +1,4 @@
+<%@page import="member.model.service.MemberService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="member.model.vo.Member" %>    
@@ -165,7 +166,7 @@ $(function(){
 					<li><a href="<%= request.getContextPath() %>/board/boardList">Community</a></li>
 					<% if(memberLoggedIn != null 
 						&& MemberService.MEMBER_ROLE_ADMIN.equals(memberLoggedIn.getMemberRole())){ %>
-					<li><a href="<%= request.getContextPath() %>/admin/memberList">회원관리</a></li>
+					<li><a href="<%= request.getContextPath() %>/admin/memberList">MemberList</a></li>
 					<% } %> 
 				</ul>
 			</nav>

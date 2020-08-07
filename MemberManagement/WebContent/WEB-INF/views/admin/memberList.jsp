@@ -12,14 +12,14 @@
 <style>
 div#search-container {margin:0 0 10px 0; padding:3px; background-color: rgba(0, 188, 212, 0.3); width: 100%;}
 div#search-memberId {display: inline-block;}
-div#search-memberName{display:none;}
-div#search-gender{display:none;}
+div#search-email{display:none;}
+div#search-memberRole{display:none;}
 </style>
 <script>
 $(function(){
 	
 	$("#searchType").change(function(){
-		$("#search-memberId, #search-memberName, #search-gender").hide();
+		$("#search-memberId, #search-email, #search-memberRole").hide();
 		console.log($(this).val());//memberId -> #search-memberId
 		$("#search-" + $(this).val()).css("display", "inline-block");
 	});
@@ -28,39 +28,39 @@ $(function(){
 
 </script>
 <section id="memberList-container">
-	<h2>회원관리</h2>
+	<h2>MemberList</h2>
 	
 	<div id="search-container">
-		검색타입 : 
+		SearchType : 
 		<select id="searchType">
-			<option value="memberId">아이디</option>		
-			<option value="memberName">회원명</option>
-			<option value="gender">성별</option>
+			<option value="memberId">Id</option>		
+			<option value="email">Email</option>
+			<option value="memberRole">MemberRole</option>
 		</select>
 		<div id="search-memberId">
 			<form action="<%=request.getContextPath()%>/admin/memberFinder">
 				<input type="hidden" name="searchType" value="memberId"/>
-				<input type="search" name="searchKeyword"  size="25" placeholder="검색할 아이디를 입력하세요." />
-				<button type="submit">검색</button>			
+				<input type="search" name="searchKeyword"  size="25" placeholder="Please enter your Id" />
+				<button type="submit">Search</button>			
 			</form>	
 		</div>
-		<div id="search-memberName">
+		<div id="search-email">
 			<form action="<%=request.getContextPath()%>/admin/memberFinder">
-				<input type="hidden" name="searchType" value="memberName"/>
-				<input type="search" name="searchKeyword" size="25" placeholder="검색할 이름을 입력하세요."/>
-				<button type="submit">검색</button>			
+				<input type="hidden" name="searchType" value="email"/>
+				<input type="search" name="searchKeyword" size="25" placeholder="Please enter your Email"/>
+				<button type="submit">Search</button>			
 			</form>	
 		</div>
-		<div id="search-gender">
+		<div id="search-memberRole">
 			<form action="<%=request.getContextPath()%>/admin/memberFinder">
-		    	<input type="hidden" name="searchType" value="gender"/>
+		    	<input type="hidden" name="searchType" value="memberRole"/>
 				
-				<input type="radio" name="searchKeyword" id="gender-M" value="M"> 
-				<label for="gender-M">남</label>
-		    	<input type="radio" name="searchKeyword" id="gender-F" value="F">
-				<label for="gender-F">여</label>
+				<input type="radio" name="searchKeyword" id="role-A" value="A"> 
+				<label for="role-A">Admin</label>
+		    	<input type="radio" name="searchKeyword" id="role-U" value="U">
+				<label for="role-U">GeneralUser</label>
 				
-		    	<button type="submit">검색</button>
+		    	<button type="submit">Search</button>
 		    </form>
 		</div>
 	</div>
@@ -68,16 +68,10 @@ $(function(){
 	<table id="tbl-member">
 		<thead>
 			<tr>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>회원권한</th>
-				<th>성별</th>
-				<th>생년월일</th>
-				<th>이메일</th>
-				<th>전화번호</th>
-				<th>주소</th>
-				<th>취미</th>
-				<th>가입날짜</th>
+				<th>Id</th>
+				<th>MemberRole</th>
+				<th>Email</th>
+				<th>EnrollDate</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -100,14 +94,8 @@ $(function(){
 							<%= m.getMemberId() %>
 						</a>
 					</td>
-					<td><%=m.getMemberName() %></td>
 					<td><%=m.getMemberRole() %></td>
-					<td><%=m.getGender() %></td>
-					<td><%=m.getBirthDay() != null ? m.getBirthDay() : "" %></td>
 					<td><%=m.getEmail() != null ? m.getEmail() : "" %></td>
-					<td><%=m.getPhone() %></td>
-					<td><%=m.getAddress() != null ? m.getAddress() : "" %></td>
-					<td><%=m.getHobby() != null ? m.getHobby() : "" %></td>
 					<td><%=m.getEnrollDate() %></td>
 				</tr>
 		<% 		

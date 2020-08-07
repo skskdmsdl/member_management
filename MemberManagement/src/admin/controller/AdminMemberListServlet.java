@@ -61,7 +61,7 @@ public class AdminMemberListServlet extends HttpServlet {
 		//1. 업무로직 : 회원목록
 		//컨텐츠영역에 대한 쿼리 요청
 		List<Member> list = new MemberService().selectAll(cPage, numPerPage);
-//		System.out.println("list@servlet = " + list);
+		System.out.println("list@servlet = " + list);
 		
 		
 		//페이지바 영역 html
@@ -71,13 +71,13 @@ public class AdminMemberListServlet extends HttpServlet {
 		String pageBar 
 			= Utils.getPageBarHtml(cPage, numPerPage, totalContents, url);
 		
+	
 		//2. view단 위임
 		request.setAttribute("list", list);
 		request.setAttribute("pageBar", pageBar);
 		
 		request.getRequestDispatcher("/WEB-INF/views/admin/memberList.jsp")
 			   .forward(request, response);
-		
 		
 	}
 

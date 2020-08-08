@@ -1,17 +1,21 @@
 ﻿@CHARSET "UTF-8";
 /*관리자 페이지 : 회원관리 */
 *{text-decoration: none;}
-section#memberList-container {text-align:center;}
-section#memberList-container table#tbl-member {width:100%; border:1px solid gray; border-collapse:collapse;}
-table#tbl-member th, table#tbl-member td {border:1px solid gray; padding:10px;}
+a{color:black;}
 
-section#memberList-container div#neck-container{padding:0px; height: 50px; background-color:rgba(0, 188, 212, 0.3);}
-section#memberList-container div#search-container {margin:0 0 10px 0; padding:3px; float:left;}
+section#memberList-container {text-align:center; margin: 50px 25px;}
+section#memberList-container table#tbl-member {width:100%; border:1px solid gray; border-collapse:collapse;}
+table#tbl-member th {background-color:#b79114bf; }
+table#tbl-member th, table#tbl-member td { padding:10px;}
+#search-container form {display:inline;}
+
+section#memberList-container div#neck-container{padding:0px; height: 50px; }
+section#memberList-container div#search-container {margin:30px 0 20px 0; padding:3px; float:left;}
 
 /*페이징 : 페이지당회원수*/
 section#memberList-container div#numPerPage-container{float:right; margin-top: 10px;}
 section#memberList-container form#numPerPageFrm{display:inline;}
 /*페이징 : 페이지바 */
-section#memberList-container div#pageBar{margin-top:10px; text-align:center; background-color:rgba(0, 188, 212, 0.3);}
-section#memberList-container div#pageBar span.cPage{color: #0066ff; margin-right: 5px;}
+section#memberList-container div#pageBar{margin-top:50px; text-align:center; }
+section#memberList-container div#pageBar span.cPage{ margin-right: 5px;}
 section#memberList-container div#pageBar a{margin-right: 5px;}

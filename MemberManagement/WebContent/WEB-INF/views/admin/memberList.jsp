@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css" />
 
 <style>
-div#search-container {margin:0 0 10px 0; padding:3px; background-color: rgba(0, 188, 212, 0.3); width: 100%;}
-div#search-memberId {display: inline-block;}
+div#search-container {margin:0 0 10px 0; padding:3px; width: 100%;}
+div#search-memberId {display: inline;}
 div#search-email{display:none;}
 div#search-memberRole{display:none;}
 </style>
@@ -21,11 +21,58 @@ $(function(){
 	$("#searchType").change(function(){
 		$("#search-memberId, #search-email, #search-memberRole").hide();
 		console.log($(this).val());//memberId -> #search-memberId
-		$("#search-" + $(this).val()).css("display", "inline-block");
+		$("#search-" + $(this).val()).css("display", "inline");
 	});
 	
 });
 
+function clear(){
+    $("section table *").removeAttr("style");
+}
+$(document).ready(function(){
+    $("section tbody tr").mouseenter(function(){
+        clear();
+        $(this).css("background", "#c6aa4c5c");
+        $(this).css("cursor", "pointer");
+
+    });
+});
+let tdArray = "";
+$(document).ready(function(){
+    $("section tbody tr").click(function(){
+        clear();
+        $(this).css("background", "#c6aa4c5c");
+        $(this).css("cursor", "pointer");
+
+        let tr = $(this); 
+        let td = tr.children();
+       
+        tdArray = new Array(); // 배열에 값 담기
+        td.each(function(i){
+            tdArray.push(td.eq(i).text());
+        });
+        
+        setTimeout(memberInfo, 300);
+    });
+}); 
+function memberInfo(){
+	
+	$.ajax({
+		url: "<%= request.getContextPath() %>/member/memberView?memberId="+tdArray[0],
+		method: "POST", 
+		dataType: "text", //html, text, json, xml 리턴된 데이터에 따라 자동설정됨
+		data:  {"memberId": tdArray[0]}, //사용자 입력값전달
+		success: function(data){
+			//요청성공시 호출되는 함수
+			console.log(data);
+			location.href="<%=request.getContextPath()%>/member/memberView?memberId="+tdArray[0];
+		},
+		error: function(xhr, textStatus, errorThrown){
+			console.log("ajax 요청 실패!");
+			console.log(xhr, textStatus, errorThrown);
+		}
+	});
+}
 </script>
 <section id="memberList-container">
 	<h2>MemberList</h2>
@@ -79,7 +126,7 @@ $(function(){
 		<% if(list == null || list.isEmpty()){ %>	
 			<%--조회된 회원이 없는 경우 --%>
 			<tr>
-				<th colspan="10"> 조회된 회원이 없습니다.</th>
+				<th colspan="10">No member has been checked.</th>
 			</tr>
 			
 		<% 
@@ -89,11 +136,7 @@ $(function(){
 		%>
 			<%--조회된 회원이 있는 경우 --%>	
 				<tr>
-					<td>
-						<a href="<%= request.getContextPath()%>/member/memberView?memberId=<%= m.getMemberId() %>">
-							<%= m.getMemberId() %>
-						</a>
-					</td>
+					<td><%= m.getMemberId() %></td>
 					<td><%=m.getMemberRole() %></td>
 					<td><%=m.getEmail() != null ? m.getEmail() : "" %></td>
 					<td><%=m.getEnrollDate() %></td>

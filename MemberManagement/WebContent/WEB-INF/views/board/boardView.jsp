@@ -159,7 +159,7 @@ function loginAlert(){
 			<!-- 작성자와 관리자만 마지막행 수정/삭제버튼이 보일수 있게 할 것 -->
 			<th colspan="2">
 				<input type="button" value="수정하기" 
-					   onclick="location.href='<%= request.getContextPath() %>/board/boardUpdate?board_num=<%= board.getBoardNo() %>';" /> 
+					   onclick="location.href='<%= request.getContextPath() %>/board/boardUpdate?boardNo=<%= board.getBoardNo() %>';" /> 
 				<input type="button" value="삭제하기" onclick="deleteBoard();"/>
 			</th>
 		</tr>

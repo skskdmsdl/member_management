@@ -11,12 +11,13 @@
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/board.css" />
 <section id="board-container">
-	<h2>게시판 </h2>
 	
 	<%-- 로그인한 경우 글쓰기 버튼 노출 --%>
 	<% if(memberLoggedIn != null){ %>
-	<input type="button" value="글쓰기" id="btn-add" 
-		   onclick="location.href = '<%= request.getContextPath() %>/board/boardForm';" />
+	<span id="btn-writing" onclick="location.href = '<%= request.getContextPath() %>/board/boardForm';">
+		Writing
+		<img src="../images/pen.png" width="40"  />
+	</span>
 	<% } %>
 	<table id="tbl-board">
 		<tr>

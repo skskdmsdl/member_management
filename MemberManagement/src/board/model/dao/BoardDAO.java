@@ -199,7 +199,7 @@ public class BoardDAO {
 	public int increaseBoardReadCount(Connection conn, int boardNo) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("increaseBoardReadCounttttt");
+		String sql = prop.getProperty("increaseBoardReadCount");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

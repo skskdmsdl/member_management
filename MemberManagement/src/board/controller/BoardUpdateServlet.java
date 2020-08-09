@@ -42,6 +42,7 @@ public class BoardUpdateServlet extends HttpServlet {
 		int boardNo;
 		try{
 			boardNo = Integer.parseInt(request.getParameter("boardNo"));
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@"+boardNo);
 		}catch(NumberFormatException e){
 			throw new BoardException("유효하지 않은 게시글입니다.");
 		}

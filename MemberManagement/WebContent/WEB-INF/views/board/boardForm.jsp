@@ -24,23 +24,23 @@ function boardValidate(){
 }
 </script>
 <section id="board-container">
-<h2>게시판 작성</h2>
+<h2>Write a post</h2>
 <form action="<%=request.getContextPath() %>/board/boardInsert" 
 	  method="post"
 	  enctype="multipart/form-data">
 	<table id="tbl-board-view">
 	<tr>
-		<th>제 목</th>
+		<th>Title</th>
 		<td><input type="text" name="boardTitle" required></td>
 	</tr>
 	<tr>
-		<th>작성자</th>
+		<th>Writer</th>
 		<td>
 			<input type="text" name="boardWriter" value="<%=memberLoggedIn.getMemberId()%>" readonly/>
 		</td>
 	</tr>
 	<tr>
-		<th>첨부파일</th>
+		<th>Attachments</th>
 		<td>			
 			<input type="file" name="upFile">
 			<!-- 동일한 이름으로 파일 여러개 올라가는 것 주의하기 아래처럼 사용하면 됨 -->
@@ -49,12 +49,12 @@ function boardValidate(){
 		</td>
 	</tr>
 	<tr>
-		<th>내 용</th>
+		<th>Contents</th>
 		<td><textarea rows="5" cols="40" name="boardContent" required></textarea></td>
 	</tr>
 	<tr>
 		<th colspan="2">
-			<input type="submit" value="등록하기" 
+			<input type="submit" value="Enroll" 
 				   onclick="return boardValidate();">
 		</th>
 	</tr>

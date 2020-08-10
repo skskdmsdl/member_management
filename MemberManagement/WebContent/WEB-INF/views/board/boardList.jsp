@@ -21,12 +21,12 @@
 	<% } %>
 	<table id="tbl-board">
 		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>첨부파일</th><%--첨부파일이 있는 경우, /images/file.png 표시 width:16px --%>
-			<th>조회수</th>
+			<th>No</th>
+			<th>Title</th>
+			<th>Writer</th>
+			<th>ReportingDate</th>
+			<th>Attachments</th><%--첨부파일이 있는 경우, /images/file.png 표시 width:16px --%>
+			<th>Views</th>
 		</tr>
 		<% if(list == null || list.isEmpty()){ %>
 			<%--조회된 행이 없는 경우 --%>
@@ -53,7 +53,7 @@
 					<td><%= b.getBoardDate() %></td>
 					<td>
 						<% if(b.getBoardOriginalFileName() != null) { %>
-						<img alt="첨부파일" 
+						<img alt="Attachments" 
 							 width="16px"
 							 src="<%= request.getContextPath() %>/images/file.png">
 						<% } %>

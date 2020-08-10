@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 /*게시판*/
+button{border:none; cursor: pointer;}
 section#board-container{width:600px; margin:50px auto; text-align:center;}
 section#board-container h2{margin:10px 0;}
 table#tbl-board{width:100%; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
@@ -43,11 +44,14 @@ span#fname {
 }
 
 /* 댓글 관련 */
+div.comment-container textarea {margin-top: 20px;}
 div.comment-container #btn-insert {
+	border-radius:20px;
+	border:none;
 	width: 60px;
-	height: 50px;
+	height: 40px;
 	color: white;
-	background-color: #30f;
+	background-color: #f3c01b;
 	position: relative;
 	top: -20px;
 }
@@ -70,7 +74,7 @@ table#tbl-comment tr.level2 sub.comment-date {color:#ff9c8a; font-size:10px}
 
 /*답글관련*/
 table#tbl-comment textarea{margin: 4px 0 0 0;}
-table#tbl-comment button.btn-insert2{width:60px; height:23px; color:white; background:#3300ff; position:relative; top:-5px; left:10px;}
+table#tbl-comment button.btn-insert2{width:60px; height:23px; color:white; border-radius:15px; background:#f3c01b; position:relative; top:-5px; left:10px;}
 
 /* 삭제버튼관련 */
 table#tbl-comment button.btn-delete{background:red; color:white; display:none;}

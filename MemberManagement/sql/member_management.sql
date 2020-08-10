@@ -77,9 +77,11 @@ COMMENT ON COLUMN "MEM"."BOARD"."BOARD_RENAMED_FILENAME" IS '첨부파일변경�
 COMMENT ON COLUMN "MEM"."BOARD"."BOARD_DATE" IS '게시글올린날짜';
 COMMENT ON COLUMN "MEM"."BOARD"."BOARD_READCOUNT" IS '조회수';
 
+--시퀀스 생성
+CREATE SEQUENCE  "MEM"."SEQ_BOARD_NO"  MINVALUE 1 MAXVALUE 9999999999 INCREMENT BY 1 START WITH 196 NOCACHE  NOORDER  NOCYCLE ;
+
 select * 
-from board
-order by board_no desc;
+from board;
 
 -- 댓글 구현
 create table board_comment (
@@ -105,6 +107,6 @@ create table board_comment (
 --시퀀스 생성
 create sequence seq_board_comment;
 
-
+commit;
 
 

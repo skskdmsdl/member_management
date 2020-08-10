@@ -22,7 +22,6 @@ function fildDownload(oname, rname){
 }
 
 $(function(){
-	
 	/*
 	* @ 실습문제
 	* 1. 삭제버튼은 작성자 본인과 관리자에게만 노출
@@ -39,7 +38,7 @@ $(function(){
 	* 
 	*/
 	$(".btn-delete").click(function(){
-		if(!confirm('댓글을 삭제하시겠습니까?')) return;
+		if(!confirm('Are you sure you want to delete?')) return;
 		
 		//삭제 : post방식 요청
 		//삭제할 번호 가져오기
@@ -51,7 +50,6 @@ $(function(){
 		$frm.attr('action', '<%= request.getContextPath() %>/board/boardCommentDelete')
 			.attr('method', 'POST')
 			.submit();
-		
 	});
 	
 	$("#boardCommentContent").click(function(){
@@ -74,7 +72,6 @@ $(function(){
 			return false;
 		}
 		
-		
 	});
 	
 	$(".btn-reply").click(function(){
@@ -88,8 +85,8 @@ $(function(){
 			$frm.append("<input type='hidden' name='boardCommentWriter' value='<%= memberLoggedIn != null ? memberLoggedIn.getMemberId() : "" %>' />");
 			$frm.append("<input type='hidden' name='boardCommentLevel' value='2' />");
 			$frm.append("<input type='hidden' name='boardCommentRef' value='"+$(this).val()+"' />");
-			$frm.append("<textarea name='boardCommentContent' cols=60 rows=1></textarea>");
-			$frm.append("<button type='submit' class='btn-insert2'>등록</button>");
+			$frm.append("<textarea name='boardCommentContent' cols=50 rows=1></textarea>");
+			$frm.append("<button type='submit' class='btn-insert2'>Enroll</button>");
 			
 			$td.append($frm);
 			$tr.append($td);
@@ -111,44 +108,44 @@ $(function(){
 });
 
 function loginAlert(){
-	alert("로그인 후 이용하실 수 있습니다.");
+	alert("Available after login");
 	$("#memberId").focus();
 }
 </script>
 
 <section id="board-container">
-	<h2>게시판</h2>
+	<h2>Community</h2>
 	<table id="tbl-board-view">
 		<tr>
-			<th>글번호</th>
+			<th>No</th>
 			<td><%= board.getBoardNo() %></td>
 		</tr>
 		<tr>
-			<th>제 목</th>
+			<th>Title</th>
 			<td><%= board.getBoardTitle() %></td>
 		</tr>
 		<tr>
-			<th>작성자</th>
+			<th>Writer</th>
 			<td><%= board.getBoardWriter() %></td>
 		</tr>
 		<tr>
-			<th>조회수</th>
+			<th>Views</th>
 			<td><%= board.getBoardReadCount() %></td>
 		</tr>
 		<tr>
-			<th>첨부파일</th>
+			<th>Attachments</th>
 			<td>
 				<% if(board.getBoardOriginalFileName() != null){ %>
 				<!-- 첨부파일이 있을경우만, 이미지와 함께 original파일명 표시 -->
 				<a href="javascript:fildDownload('<%= board.getBoardOriginalFileName() %>','<%= board.getBoardRenamedFileName() %>');">
-					<img alt="첨부파일" src="<%=request.getContextPath() %>/images/file.png" width=16px>
+					<img alt="Attachments" src="<%=request.getContextPath() %>/images/file.png" width=16px>
 					<%= board.getBoardOriginalFileName() %>
 				</a>
 				<% } %>
 			</td>
 		</tr>
 		<tr>
-			<th>내 용</th>
+			<th>Contents</th>
 			<td><%= board.getBoardContent() %></td>
 		</tr>
 		<% if(memberLoggedIn != null 
@@ -158,9 +155,9 @@ function loginAlert(){
 		<tr>
 			<!-- 작성자와 관리자만 마지막행 수정/삭제버튼이 보일수 있게 할 것 -->
 			<th colspan="2">
-				<input type="button" value="수정하기" 
+				<input type="button" value="Modify" 
 					   onclick="location.href='<%= request.getContextPath() %>/board/boardUpdate?boardNo=<%= board.getBoardNo() %>';" /> 
-				<input type="button" value="삭제하기" onclick="deleteBoard();"/>
+				<input type="button" value="Delete" onclick="deleteBoard();"/>
 			</th>
 		</tr>
 		
@@ -185,8 +182,8 @@ function loginAlert(){
 			      
 			      <textarea name="boardCommentContent" 
 			      			id="boardCommentContent" 
-			      			cols="60" rows="3"></textarea>
-			      <input type="submit" value="등록" id="btn-insert" />
+			      			cols="60" rows="2"></textarea>
+			      <input type="submit" value="Enroll" id="btn-insert" />
 			
 			</form>
 		</div>
@@ -213,7 +210,7 @@ function loginAlert(){
 				</td>
 				<td>
 					<button class="btn-reply"
-							value="<%= bc.getBoardCommentNo() %>">답글</button>
+							value="<%= bc.getBoardCommentNo() %>">Reply</button>
 					<% if(
 						memberLoggedIn != null
 						&& (memberLoggedIn.getMemberId().equals(bc.getBoardCommentWriter())
@@ -221,7 +218,7 @@ function loginAlert(){
 					
 						){ %>
 					<button class="btn-delete"
-							value="<%= bc.getBoardCommentNo() %>">삭제</button>
+							value="<%= bc.getBoardCommentNo() %>">Del</button>
 					<% } %>
 				</td>
 			</tr>	
@@ -248,7 +245,7 @@ function loginAlert(){
 					
 						){ %>
 					<button class="btn-delete"
-							value="<%= bc.getBoardCommentNo() %>">삭제</button>
+							value="<%= bc.getBoardCommentNo() %>">Del</button>
 					<% } %>
 				</td>
 		<% 		
@@ -282,7 +279,7 @@ function loginAlert(){
 <!-- 일반 사용자가 이 함수 구경조차 못하도록 이 위치에 script -->
 <script>
 function deleteBoard(){
-	if(!confirm("정말 삭제하시겠습니까?")) return;
+	if(!confirm("Are you sure you want to delete?")) return;
 	
 	$("[name=deleteBoardFrm]").submit();	
 }

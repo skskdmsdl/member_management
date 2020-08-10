@@ -186,7 +186,7 @@ $(function(){
 	                </div>
 	                <input type="button" id="closeBtn" value="x" onclick="closeBtn();">
 	                <div class="icons">
-	                    <img src="images/Snitch.png" alt="Golden-Snitch">
+	                    <img src="<%= request.getContextPath() %>/images/Snitch.png" alt="Golden-Snitch">
 	                </div>   
 	                <form action="<%= request.getContextPath() %>/member/login" id="login" method="post" class="input-group">
 	                    <input type="text" id="loginId" name="memberId" class="input-field" placeholder="User ID" required

@@ -114,40 +114,55 @@ function loginAlert(){
 </script>
 
 <section id="board-container">
-
-	<div id="viewPaper">
-		<div id="viewText">
-			<p id="viewNo">No.<%= board.getBoardNo() %></p>
-			<p id="viewCount">Views.<%= board.getBoardReadCount() %></p>
-			<p id="viewTitle"><%= board.getBoardTitle() %></p>
-			
-			
-			<p><%= board.getBoardContent() %></p>
-			<p id="viewFile">
-			<% if(board.getBoardOriginalFileName() != null){ %>
-			ps.
-			<!-- 첨부파일이 있을경우만, 이미지와 함께 original파일명 표시 -->
-			<a href="javascript:fildDownload('<%= board.getBoardOriginalFileName() %>','<%= board.getBoardRenamedFileName() %>');">
-				<img src="<%=request.getContextPath() %>/images/file.png" width=16px>
-				<%= board.getBoardOriginalFileName() %>
-			</a>
-			<% } %>
-			</p>
-			<div id="viewWriter"><%= board.getBoardWriter() %></div>
-		</div>
-	</div>
-			<% if(memberLoggedIn != null 
-				&& (MemberService.MEMBER_ROLE_ADMIN.equals(memberLoggedIn.getMemberRole())
-					|| board.getBoardWriter().equals(memberLoggedIn.getMemberId()))
-				){ %>
-				<!-- 작성자와 관리자만 마지막행 수정/삭제버튼이 보일수 있게 할 것 -->
-				<div>
-					<input type="button" value="Modify" 
-						   onclick="location.href='<%= request.getContextPath() %>/board/boardUpdate?boardNo=<%= board.getBoardNo() %>';" /> 
-					<input type="button" value="Delete" onclick="deleteBoard();"/>
-				</div>	
-			
-			<% } %>
+	<h2>Community</h2>
+	<table id="tbl-board-view">
+		<tr>
+			<th>No</th>
+			<td><%= board.getBoardNo() %></td>
+		</tr>
+		<tr>
+			<th>Title</th>
+			<td><%= board.getBoardTitle() %></td>
+		</tr>
+		<tr>
+			<th>Writer</th>
+			<td><%= board.getBoardWriter() %></td>
+		</tr>
+		<tr>
+			<th>Views</th>
+			<td><%= board.getBoardReadCount() %></td>
+		</tr>
+		<tr>
+			<th>Attachments</th>
+			<td>
+				<% if(board.getBoardOriginalFileName() != null){ %>
+				<!-- 첨부파일이 있을경우만, 이미지와 함께 original파일명 표시 -->
+				<a href="javascript:fildDownload('<%= board.getBoardOriginalFileName() %>','<%= board.getBoardRenamedFileName() %>');">
+					<img alt="Attachments" src="<%=request.getContextPath() %>/images/file.png" width=16px>
+					<%= board.getBoardOriginalFileName() %>
+				</a>
+				<% } %>
+			</td>
+		</tr>
+		<tr>
+			<th>Contents</th>
+			<td><%= board.getBoardContent() %></td>
+		</tr>
+		<% if(memberLoggedIn != null 
+			&& (MemberService.MEMBER_ROLE_ADMIN.equals(memberLoggedIn.getMemberRole())
+				|| board.getBoardWriter().equals(memberLoggedIn.getMemberId()))
+			){ %>
+		<tr>
+			<!-- 작성자와 관리자만 마지막행 수정/삭제버튼이 보일수 있게 할 것 -->
+			<th colspan="2">
+				<input type="button" value="Modify" 
+					   onclick="location.href='<%= request.getContextPath() %>/board/boardUpdate?boardNo=<%= board.getBoardNo() %>';" /> 
+				<input type="button" value="Delete" onclick="deleteBoard();"/>
+			</th>
+		</tr>
+		
+		<% } %>
+	</table>
 	
 	<hr style="margin-top: 30px;"/>
 	

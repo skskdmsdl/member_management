@@ -39,11 +39,11 @@ function boardValidate(){
 			<!-- <input type="file" name="upFile2">
 			<input type="file" name="upFile3"> -->
 		</div>
-		<div>From. 
+		<div id="frmWriter">From. 
 			<input class="frmInput" type="text" name="boardWriter" value="<%=memberLoggedIn.getMemberId()%>" readonly/>
 		</div>
+	<input id="frmEnrollBtn" class="frmInput" type="submit" value="&emsp;&emsp;&emsp;Enroll" onclick="return boardValidate();">
 	</div>
-	<input type="submit" value="Enroll" onclick="return boardValidate();">
 </form>
 </section>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

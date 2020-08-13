@@ -16,7 +16,10 @@ div#pageBar span.cPage{margin-right: 5px;}
 div#pageBar a{margin-right: 5px;}
 
 /*게시글 작성/상세보기 테이블*/
-#viewPaper {margin-bottom:20px; width:600px; height:800px; position: relative; background-image: url("../images/paper.png");background-repeat: no-repeat;background-size: cover;}
+input[name=boardTitle] {margin: 30px; font-size: 30px; text-align: center;}
+#frmFile {margin: 10px 0 0 30px; text-align: left;}
+.frmInput {border: none; background-color: transparent;}
+#viewPaper, #boardInputFrm {margin-bottom:20px; width:600px; height:800px; position: relative; background-image: url("../images/paper.png");background-repeat: no-repeat;background-size: cover;}
 #viewText {padding:30px 50px; position: absolute;width:500px;height:740px;}
 #viewNo, #viewCount {font-size: 15px; text-align: right;}
 #viewTitle {font-size: 30px; margin: 30px 0;}

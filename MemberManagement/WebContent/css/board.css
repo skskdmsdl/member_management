@@ -17,6 +17,7 @@ div#pageBar a{margin-right: 5px;}
 
 /*게시글 작성/상세보기 테이블*/
 #boardInputFrm {margin-bottom:100px; width:600px; height:800px; position: relative; background-image: url("../images/paper.png");background-repeat: no-repeat;background-size: cover;}
+#boardInputUpdate {margin-bottom:20px; width:600px; height:800px; position: relative; background-image: url("../images/paper.png");background-repeat: no-repeat;background-size: cover;}
 input[name=boardTitle] {margin: 30px; font-size: 30px; text-align: center;}
 input[name=boardWriter] {width:130px; font-size: 28px;}
 #frmFile {margin: 10px 0 0 30px; text-align: left;}
@@ -33,11 +34,11 @@ input[name=boardWriter] {width:130px; font-size: 28px;}
 /* 첨부파일명 표시 관련 */
 span#fname {
 	position: absolute;
-	left: 92px;
-	top: 9px;
+	left: 130px;
 	width: 200px;
-	background: #f5f5f5;
+	background-image: url("../images/paperPart.png");background-repeat: no-repeat;background-size: cover;
 }
+input[name=delFile] {margin:5px 0 0 20px;}
 
 /* 댓글 관련 */
 div.comment-container textarea {margin-top: 20px;}

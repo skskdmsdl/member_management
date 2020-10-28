@@ -19,7 +19,7 @@ MemberManagement_Project
 * 댓글/대댓글
 
 # ERD
-![erd](https://user-images.githubusercontent.com/66931820/97409160-8848b600-1940-11eb-953b-8f27d1c9120a.png)
+![화면 캡처 2020-10-28 185626](https://user-images.githubusercontent.com/66931820/97420975-51c66780-194f-11eb-8c85-bdce04e71a17.png)
 
 
 # README

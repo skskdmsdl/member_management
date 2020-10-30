@@ -25,14 +25,14 @@ MemberManagement_Project
 # README
 회원관리 & 커뮤니티(게시판, 댓글 기능) 웹 사이트 입니다!
 
-* USER 
+* USER<br/>
+일반유저로 로그인하면 게시판 이용가능
    * id : harrypotter
    * pw : 1234
-일반유저로 로그인하면 게시판 이용가능
 
-
-* ADMIN
+* ADMIN<br/>
+어드민으로 로그인하면 관리자페이지 이용가능
   * id : admin
   * pw : 1234
-어드민으로 로그인하면 관리자페이지 이용가능
+
 
